@@ -1,4 +1,4 @@
-# Smart AI Monitoring System - Setup Guide
+# AURIX (Autonomous Unified Reasoning across Inputs for Contextual eXecution)- Detailed Guide
 # Complete installation and configuration instructions
 
 ## 🎯 Project Overview
