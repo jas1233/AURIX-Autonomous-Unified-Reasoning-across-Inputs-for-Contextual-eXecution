@@ -5,12 +5,12 @@ Building the Untethered, Always-On AI Companion
 Reimagine a smartphone that doesn't just run apps, but truly understands and assists user. An agent that sees what you see, hears what you hear, and remembers your experiences to provide contextual, real-time help, all without a constant connection to the cloud.
 
 ## 👥 Team Information
-- **Team Name**: (As provided during registration)  
+- **Team Name**: Night owl coders
 - **Team Members**:  
-  - Member 1 Name  
-  - Member 2 Name  
-  - Member 3 Name  
-  - Member 4 Name  
+  - Jaskaranjeet Singh
+  - Dhrumil Parikh 
+  - Dhruv Kumar Singh 
+  - Kartik Kansal  
 
 ## 🎥 Demo Video
 [▶️ Watch Demo Video](<YouTube Public/Unlisted Link>)  
