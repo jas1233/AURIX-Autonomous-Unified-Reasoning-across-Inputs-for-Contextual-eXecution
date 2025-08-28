@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart AI Monitoring System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1>Smart AI Monitoring System</h1>
+                <div class="status-indicators">
+                    <div class="status-dot active" id="system-status"></div>
+                    <span class="status-text">SYSTEM ACTIVE</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="master-control">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="master-toggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <span>Master Control</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Grid -->
+        <div class="main-grid">
+            <!-- Section 1: Camera & Object Detection -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>Camera & Object Detection</h2>
+                    <label class="toggle-switch">
+                        <input type="checkbox" class="module-toggle" id="camera-toggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="panel-content">
+                    <div class="video-feed">
+                        <div class="video-simulation" id="video-simulation">
+                            <div class="bounding-box" style="top: 20%; left: 15%; width: 25%; height: 40%;">
+                                <div class="box-label">Person: Standing near desk</div>
+                            </div>
+                            <div class="bounding-box" style="top: 15%; right: 20%; width: 15%; height: 20%;">
+                                <div class="box-label">Phone: In hand, active</div>
+                            </div>
+                            <div class="bounding-box" style="bottom: 25%; left: 25%; width: 30%; height: 15%;">
+                                <div class="box-label">Laptop: Open, on desk</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detection-info">
+                        <h3>Detected Objects</h3>
+                        <div class="object-list" id="object-list">
+                            <!-- Objects will be populated by JS -->
+                        </div>
+                        <div class="gpt-analysis">
+                            <h4>GPT Context Analysis</h4>
+                            <p id="context-analysis">Analyzing workspace environment: Person appears to be in active work session with multiple devices present.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Screen Monitoring -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>Screen Monitoring</h2>
+                    <label class="toggle-switch">
+                        <input type="checkbox" class="module-toggle" id="screen-toggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="panel-content">
+                    <div class="screen-preview">
+                        <div class="mock-screen">
+                            <div class="screen-app">VS Code - Python Development</div>
+                            <div class="auto-refresh">
+                                <span class="refresh-indicator">Auto-refresh: 2s</span>
+                                <div class="refresh-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="screen-analysis">
+                        <div class="ocr-results">
+                            <h3>OCR Text Extraction</h3>
+                            <div class="extracted-text" id="extracted-text">Python code editing in progress...</div>
+                        </div>
+                        <div class="recommendations">
+                            <h3>GPT Recommendations</h3>
+                            <div class="recommendation-list" id="recommendation-list">
+                                <!-- Recommendations populated by JS -->
+                            </div>
+                        </div>
+                        <div class="activity-timeline">
+                            <h3>Activity Timeline</h3>
+                            <div class="timeline" id="timeline">
+                                <!-- Timeline populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Voice Command -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>Voice Command Processing</h2>
+                    <label class="toggle-switch">
+                        <input type="checkbox" class="module-toggle" id="voice-toggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="panel-content">
+                    <div class="voice-input">
+                        <div class="microphone">
+                            <div class="mic-icon" id="mic-icon">🎤</div>
+                            <div class="voice-indicator">
+                                <div class="wave"></div>
+                                <div class="wave"></div>
+                                <div class="wave"></div>
+                            </div>
+                        </div>
+                        <div class="language-detection">
+                            <span id="detected-language">Hindi/English detected</span>
+                        </div>
+                    </div>
+                    <div class="command-history">
+                        <h3>Command History</h3>
+                        <div class="command-list" id="command-list">
+                            <!-- Commands populated by JS -->
+                        </div>
+                    </div>
+                    <div class="supported-commands">
+                        <h3>Supported Commands</h3>
+                        <div class="command-grid" id="supported-commands">
+                            <!-- Supported commands populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 4: Call Monitoring -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>Call Security Monitor</h2>
+                    <label class="toggle-switch">
+                        <input type="checkbox" class="module-toggle" id="call-toggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="panel-content">
+                    <div class="call-status">
+                        <div class="live-indicator">
+                            <div class="pulse-dot"></div>
+                            <span>Monitoring Active</span>
+                        </div>
+                    </div>
+                    <div class="call-alerts">
+                        <div class="alert-notification active">
+                            <span class="alert-icon">⚠️</span>
+                            <span>SPAM ALERT: OTP verification detected</span>
+                        </div>
+                    </div>
+                    <div class="call-log">
+                        <h3>Call Risk Assessment</h3>
+                        <div class="log-list" id="call-log">
+                            <!-- Call logs populated by JS -->
+                        </div>
+                    </div>
+                    <div class="suspicious-words">
+                        <h3>Monitored Keywords</h3>
+                        <div class="keyword-list">
+                            <span class="keyword">OTP</span>
+                            <span class="keyword">verification</span>
+                            <span class="keyword">urgent</span>
+                            <span class="keyword">lottery</span>
+                            <span class="keyword">winner</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Control Center -->
+        <footer class="control-center">
+            <div class="control-section">
+                <h3>System Performance</h3>
+                <div class="metrics">
+                    <div class="metric">
+                        <span>CPU</span>
+                        <div class="progress-bar">
+                            <div class="progress" id="cpu-progress" style="width: 45%"></div>
+                        </div>
+                        <span id="cpu-value">45%</span>
+                    </div>
+                    <div class="metric">
+                        <span>Memory</span>
+                        <div class="progress-bar">
+                            <div class="progress" id="memory-progress" style="width: 62%"></div>
+                        </div>
+                        <span id="memory-value">62%</span>
+                    </div>
+                    <div class="metric">
+                        <span>Network</span>
+                        <div class="progress-bar">
+                            <div class="progress" id="network-progress" style="width: 78%"></div>
+                        </div>
+                        <span id="network-value">78%</span>
+                    </div>
+                    <div class="metric">
+                        <span>Storage</span>
+                        <div class="progress-bar">
+                            <div class="progress" id="storage-progress" style="width: 34%"></div>
+                        </div>
+                        <span id="storage-value">34%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="control-section">
+                <h3>System Logs</h3>
+                <div class="log-viewer" id="log-viewer">
+                    <div class="log-entry">[14:32:15] Camera detection active - 6 objects detected</div>
+                    <div class="log-entry">[14:32:01] Voice command executed: Turn on flashlight</div>
+                    <div class="log-entry">[14:31:55] Call blocked - HIGH RISK: Spam detected</div>
+                    <div class="log-entry">[14:31:45] Screen activity: Chrome - Research documentation</div>
+                </div>
+            </div>
+            <div class="control-section">
+                <h3>Settings</h3>
+                <div class="settings-grid">
+                    <button class="btn btn--outline btn--sm">Configure Alerts</button>
+                    <button class="btn btn--outline btn--sm">Update Models</button>
+                    <button class="btn btn--outline btn--sm">Export Logs</button>
+                    <button class="btn btn--outline btn--sm">System Diagnostics</button>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
