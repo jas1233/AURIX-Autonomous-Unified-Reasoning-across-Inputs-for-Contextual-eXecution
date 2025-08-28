@@ -13,7 +13,7 @@ Reimagine a smartphone that doesn't just run apps, but truly understands and ass
   - Kartik Kansal  
 
 ## 🎥 Demo Video
-[▶️ Watch Demo Video](<YouTube Public/Unlisted Link>)  
+[▶️ Watch Demo Video](https://drive.google.com/file/d/1DvL1lUAkOfF4Xy3L3karB60UWo-Dh6Ez/view?usp=sharing)  
 
 ---
 
