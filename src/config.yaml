@@ -1,0 +1,189 @@
+# Smart AI Monitoring System Configuration
+
+# OpenAI Configuration
+openai:
+  api_key: "your-openai-api-key-here"  # Get from https://platform.openai.com/account/api-keys
+  model: "gpt-3.5-turbo-instruct"      # or "gpt-4" for better analysis
+  max_tokens: 100
+  temperature: 0.7
+
+# Camera Configuration
+camera:
+  device_id: 0                         # Default camera (0), USB camera (1,2,...)
+  resolution:
+    width: 640
+    height: 480
+  fps: 30
+  detection_interval: 3                # Process every Nth frame to reduce CPU load
+
+# YOLO Object Detection
+yolo:
+  model_path: "yolov8n.pt"            # YOLOv8 nano (fastest), or yolov8s.pt, yolov8m.pt, yolov8l.pt, yolov8x.pt
+  confidence_threshold: 0.5            # Minimum confidence for detections
+  classes_to_detect: [0, 67]          # 0=person, 67=cell phone, etc. Leave empty for all classes
+  max_detections: 10                   # Maximum objects to detect per frame
+
+# OCR Configuration
+ocr:
+  tesseract_path: "C:\\Program Files\\Tesseract-OCR\\tesseract.exe"  # Windows path
+  # tesseract_path: "/usr/bin/tesseract"                              # Linux path
+  # tesseract_path: "/opt/homebrew/bin/tesseract"                     # macOS path
+  languages: ["eng", "hin"]            # English and Hindi
+  config: "--psm 6"                    # Page segmentation mode
+
+# Screen Monitoring
+screen:
+  capture_interval: 2                  # Seconds between captures
+  resize_factor: 0.5                   # Resize images to reduce processing time
+  max_text_length: 500                 # Maximum OCR text length to process
+
+# Speech Recognition
+speech:
+  languages:
+    - "en-IN"                          # Indian English
+    - "hi-IN"                          # Hindi
+  timeout: 1                           # Listening timeout in seconds
+  phrase_time_limit: 5                 # Maximum phrase length in seconds
+  energy_threshold: 300                # Minimum audio energy to consider as speech
+  dynamic_energy_threshold: true       # Automatically adjust energy threshold
+
+# Voice Commands
+voice_commands:
+  flashlight:
+    keywords: ["flashlight", "torch", "light", "टॉर्च", "लाइट", "बत्ती"]
+    actions: ["on", "off", "चालू", "बंद"]
+  screenshot:
+    keywords: ["screenshot", "capture", "photo", "स्क्रीनशॉट", "फोटो", "तस्वीर"]
+  volume:
+    keywords: ["volume", "sound", "आवाज़", "वॉल्यूम", "साउंड"]
+    actions: ["up", "down", "increase", "decrease", "बढ़ाओ", "कम", "तेज़", "धीमा"]
+  calculator:
+    keywords: ["calculator", "calc", "कैलकुलेटर"]
+  weather:
+    keywords: ["weather", "मौसम", "weather", "temperature"]
+  timer:
+    keywords: ["timer", "alarm", "टाइमर", "अलार्म"]
+
+# Call Monitoring
+call_monitoring:
+  suspicious_keywords:
+    - "otp"
+    - "verification" 
+    - "verify"
+    - "urgent"
+    - "bank"
+    - "account"
+    - "suspended"
+    - "blocked"
+    - "click here"
+    - "lottery"
+    - "winner"
+    - "prize"
+    - "congratulations"
+    - "claim"
+    - "offer"
+    - "limited time"
+    - "expire"
+    - "immediate"
+    - "credit card"
+    - "loan"
+    - "refund"
+    - "tax"
+    - "IRS"
+    - "government"
+  risk_thresholds:
+    high: 3                            # Number of suspicious words for HIGH risk
+    medium: 1                          # Number of suspicious words for MEDIUM risk
+  actions:
+    high_risk: "BLOCK"                 # AUTO_BLOCK, ALERT, LOG
+    medium_risk: "MONITOR"             # MONITOR, ALERT, LOG
+    low_risk: "ALLOW"                  # ALLOW, LOG
+
+# System Performance
+performance:
+  max_threads: 8                       # Maximum concurrent threads
+  queue_sizes:
+    camera: 10
+    screen: 10  
+    voice: 20
+    call: 20
+  memory_limit_mb: 2048               # Maximum memory usage in MB
+  cpu_threshold: 80                   # Alert if CPU usage exceeds this percentage
+
+# Logging Configuration
+logging:
+  level: "INFO"                       # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: "%(asctime)s - %(threadName)s - %(levelname)s - %(message)s"
+  files:
+    main_log: "monitoring_system.log"
+    error_log: "errors.log"
+    results_log: "results.log"
+  max_file_size_mb: 50
+  backup_count: 5
+
+# Data Storage
+storage:
+  results_directory: "results"
+  screenshots_directory: "screenshots"
+  recordings_directory: "recordings"
+  max_results_in_memory: 100          # Keep last N results in memory
+  auto_save_interval: 300             # Auto-save results every N seconds
+  export_format: "json"               # json, csv, xlsx
+
+# Alert System
+alerts:
+  enabled: true
+  notification_types:
+    - "desktop"                       # Desktop notifications
+    - "email"                         # Email alerts (requires SMTP setup)
+    - "webhook"                       # Webhook calls
+  email:
+    smtp_server: "smtp.gmail.com"
+    smtp_port: 587
+    username: "your-email@gmail.com"
+    password: "your-app-password"
+    recipients: ["admin@example.com"]
+  webhook:
+    url: "https://your-webhook-url.com/alerts"
+    headers:
+      Authorization: "Bearer your-token"
+
+# Hardware Integration (Optional)
+hardware:
+  flashlight:
+    enabled: false
+    type: "gpio"                      # gpio, serial, usb
+    pin: 18                           # GPIO pin for Raspberry Pi
+  camera_control:
+    enabled: false
+    pan_tilt: false
+    zoom: false
+
+# Advanced Features
+advanced:
+  face_recognition:
+    enabled: false
+    model_path: "face_recognition_model.pkl"
+  emotion_detection:
+    enabled: false
+    model_path: "emotion_model.h5"
+  activity_detection:
+    enabled: false
+    model_path: "activity_model.pt"
+  
+# Development Settings
+development:
+  debug_mode: false
+  mock_data: true                     # Use mock data when hardware unavailable
+  performance_profiling: false
+  save_debug_images: false
+  verbose_logging: false
+
+# API Configuration (if building web interface)
+api:
+  enabled: false
+  host: "localhost"
+  port: 5000
+  cors_enabled: true
+  api_key_required: false
+  rate_limiting: false
