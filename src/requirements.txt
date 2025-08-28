@@ -1,0 +1,109 @@
+# Smart AI Monitoring System - Requirements
+# Main dependencies for the 4 parallel processing system
+
+# Computer Vision and Object Detection
+opencv-python==4.8.1.78
+ultralytics==8.0.196
+pytesseract==0.3.10
+pillow==10.0.1
+
+# Speech Recognition
+speechrecognition==3.10.0
+pyaudio==0.2.11
+wave==0.0.2
+
+# AI Integration
+openai==0.28.1
+
+# System Monitoring
+psutil==5.9.5
+pygetwindow==0.0.9
+
+# Threading and Async
+asyncio
+concurrent.futures
+
+# Data Processing
+numpy==1.24.3
+pandas==2.0.3
+
+# Networking (for call monitoring simulation)
+requests==2.31.0
+websockets==11.0.3
+
+# Audio Processing
+librosa==0.10.1
+soundfile==0.12.1
+
+# Image Processing
+scikit-image==0.21.0
+
+# GUI (optional, for system control interface)
+tkinter
+customtkinter==5.2.0
+
+# Logging and Configuration
+pyyaml==6.0.1
+colorlog==6.7.0
+
+# Performance Monitoring
+memory-profiler==0.61.0
+line-profiler==4.1.1
+
+# System Integration
+keyboard==0.13.5
+mouse==0.7.1
+
+# File Handling
+pathlib
+os-sys==2.1.4
+
+# Date and Time
+python-dateutil==2.8.2
+
+# Optional: For advanced OCR
+easyocr==1.7.0
+paddleocr==2.7.0.3
+
+# Optional: For improved speech recognition
+vosk==0.3.45
+faster-whisper==0.9.0
+
+# Optional: For hardware integration
+serial==0.0.97
+pyserial==3.5
+
+# Development and Testing
+pytest==7.4.2
+pytest-asyncio==0.21.1
+black==23.7.0
+flake8==6.0.0
+
+# Optional: For database storage
+sqlite3
+sqlalchemy==2.0.20
+
+# Optional: For web interface
+flask==2.3.3
+flask-socketio==5.3.6
+websockets==11.0.3
+
+# Platform-specific requirements:
+# Windows:
+# - Install Microsoft Visual C++ Build Tools
+# - Install Tesseract OCR from: https://github.com/UB-Mannheim/tesseract/wiki
+# - Add Tesseract to PATH
+
+# Linux/macOS:
+# - sudo apt-get install tesseract-ocr (Ubuntu/Debian)
+# - brew install tesseract (macOS)
+# - Install portaudio: sudo apt-get install portaudio19-dev python3-pyaudio
+
+# YOLO Model Installation:
+# The system will automatically download YOLOv8 model on first run
+# For custom models, place .pt files in the project directory
+
+# OpenAI API Key:
+# Sign up at https://openai.com/
+# Get your API key from https://platform.openai.com/account/api-keys
+# Add to config.yaml or environment variables
